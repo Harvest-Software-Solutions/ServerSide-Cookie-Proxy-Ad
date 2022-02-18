@@ -69,7 +69,8 @@ app.get('/ssp', cors({credentials: true, origin: 'https://imasdk.googleapis.com'
 
 app.get('/xandr', cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
   console.log(req.query);
-  const url = 'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.query.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.query.ua;
+  const url = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpostonly&cmsid=496&vid=short_onecue&correlator='; 
+//         'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.query.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.query.ua;
   makeXandrCall(url).then((response) => {
     res.type('application/xml');
     res.send(response);
