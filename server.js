@@ -6,7 +6,9 @@ const request = require('request');
 const cors = require('cors');
 
 const videoJson1 = [{
-  'src': 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+  'sources': [{
+      'src': 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+      'type': 'video/mp4'}],
   'contentproducerId': 1002,
   'publisherId': 1007,
   'videoId': 5009,
