@@ -16,7 +16,9 @@ const videoJson1 = [{
 
 const videoJson2 = [
   {
-    'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/2b08b86bcab54e9abdf685e816721e01/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
+    'sources': [{
+      'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/2b08b86bcab54e9abdf685e816721e01/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
+      'type': 'application/x-mpegURL'}],
     'contentproducerId': 1002,
     'publisherId': 1007,
     'videoId': 5010,
@@ -25,7 +27,9 @@ const videoJson2 = [
     'title': 'By Blender Foundation',
   },
   {
-    'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/ab7533ed21a2476abadb3afa93955314/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
+    'sources': [{
+      'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/ab7533ed21a2476abadb3afa93955314/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
+      'type': 'application/x-mpegURL'}],
     'contentproducerId': 1002,
     'publisherId': 1007,
     'videoId': 5011,
@@ -34,7 +38,9 @@ const videoJson2 = [
     'title': 'By Blender Foundation',
   },
   {
-    'src': 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'sources': [{
+      'src': 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+      'type': 'video/mp4'}],
     'contentproducerId': 1002,
     'publisherId': 1007,
     'videoId': 5012,
