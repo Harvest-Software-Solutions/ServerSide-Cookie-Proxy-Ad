@@ -44,6 +44,36 @@ const videoJson2 = [
   },
 ];
 
+const videoJson3 = [
+  {
+    'src': 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    'contentproducerId': 1002,
+    'publisherId': 1007,
+    'videoId': 5078,
+    'poster': 'https://d1pwmephoxhygn.cloudfront.net/VideoElephant/6cf22cd5-7529-4be7-80cb-b63f4c9a3fac/assets/Thumbnails/5d9d74f35c82b316cf46b3ba2e38a377.0000001.jpg',
+    'sequence': 0,
+    'title': 'By Blender Foundation',
+  },
+  {
+    'src': 'ttp://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    'contentproducerId': 1002,
+    'publisherId': 1007,
+    'videoId': 5079,
+    'poster': 'https://d1pwmephoxhygn.cloudfront.net/VideoElephant/6ae008fc-146e-4908-baf4-ac3eaf65a457/assets/Thumbnails/2338767f5611cfd7780dad4ab9264bbb.0000001.jpg',
+    'sequence': 1,
+    'title': 'By Blender Foundation',
+  },
+  {
+    'src': 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'contentproducerId': 1002,
+    'publisherId': 1007,
+    'videoId': 5080,
+    'poster': 'https://d1pwmephoxhygn.cloudfront.net/VideoElephant/ac064fe9-e5c2-480d-a09f-e53cf9e9c067/assets/Thumbnails/0170c9175e1326322af9f165bbb06e21.0000001.jpg',
+    'sequence': 2,
+    'title': 'By Blender Foundation',
+  },
+];
+
 app.get('/xandrgetUID', function(req, res) {
   console.log(req.query);
   res.send(req.query);
@@ -69,7 +99,8 @@ app.get('/ssp', cors({credentials: true, origin: 'https://imasdk.googleapis.com'
 
 app.get('/xandr', cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
   console.log(req.query);
-  const url = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostpodbumper&cmsid=496&vid=short_onecue&correlator=';
+  const url = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/MidandPost.xml'
+//         'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostpodbumper&cmsid=496&vid=short_onecue&correlator=';
 //         'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpostonly&cmsid=496&vid=short_onecue&correlator='; 
 //         'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.query.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.query.ua;
   makeXandrCall(url).then((response) => {
@@ -97,7 +128,11 @@ app.get('/getplaylistvideos', cors({
   console.log(req.query);
   if (Number(req.query.playlistId) === 45678) {
     res.json(videoJson2);
-  } else res.json({data: 'record not found'});
+  }
+  else if(Number(req.query.playlistId) === 45679){
+    res.json(videoJson3);
+  }
+  else res.json({data: 'record not found'});
 });
 
 app.get('/', function(req, res) {
