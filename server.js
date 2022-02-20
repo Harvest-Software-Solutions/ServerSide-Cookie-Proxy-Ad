@@ -6,7 +6,7 @@ const request = require('request');
 const cors = require('cors');
 
 const videoJson1 = [{
-  'src': 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+  'src': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
   'contentproducerId': 1002,
   'publisherId': 1007,
   'videoId': 5009,
@@ -46,7 +46,7 @@ const videoJson2 = [
 
 const videoJson3 = [
   {
-    'src': 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    'src': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     'contentproducerId': 1002,
     'publisherId': 1007,
     'videoId': 5078,
@@ -55,7 +55,7 @@ const videoJson3 = [
     'title': 'By Blender Foundation',
   },
   {
-    'src': 'ttp://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    'src': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     'contentproducerId': 1002,
     'publisherId': 1007,
     'videoId': 5079,
@@ -64,7 +64,7 @@ const videoJson3 = [
     'title': 'By Blender Foundation',
   },
   {
-    'src': 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'src': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
     'contentproducerId': 1002,
     'publisherId': 1007,
     'videoId': 5080,
