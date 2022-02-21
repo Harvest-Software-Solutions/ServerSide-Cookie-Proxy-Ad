@@ -5,6 +5,8 @@ const app = express();
 const PORT = process.env.PORT || 80;
 const request = require('request');
 const cors = require('cors');
+var timeout = require('connect-timeout');
+
 let _chanceBidUrl = '';
 
 const videoJson1 = [{
@@ -134,7 +136,7 @@ app.get('/ssp', cors({credentials: true, origin: 'https://imasdk.googleapis.com'
   });
 });
 
-app.get('/ads', cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
+app.get('/ads',timeout(5000), cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
   _chanceBidUrl = '';
   console.log('request received', _chanceBidUrl);
   chanceBid().then(() => {
