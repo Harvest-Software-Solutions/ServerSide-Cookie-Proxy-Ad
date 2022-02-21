@@ -97,6 +97,7 @@ function makeXandrCall(url) {
 }
 
 function chanceBid() {
+  console.log('chancebid');
   if (Math.random() < 0.1) {
     // 10% probability of getting true
     surveyPreroll = true;
@@ -127,15 +128,15 @@ function chanceBid() {
 }
 
 function chanceBidUrl(req) {
-  console.log(req);
+  console.log('chancebidUrl', req);
   if (surveyPreroll === true) {
     return ['https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/simid&description_url=https%3A%2F%2Fdevelopers.google.com%2Finteractive-media-ads&tfcd=0&npa=0&sz=640x480&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=', 'surverypreroll G'];
   } else if ( vpaidlinear === true) {
     return ['https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=', 'linear G'];
   } else if (vpaidnonlinear === true) {
-    return ['https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dnonlinearvpaid2js&correlator=','nonlinear G'];
+    return ['https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dnonlinearvpaid2js&correlator=', 'nonlinear G'];
   } else if ( redirect === true) {
-    return ['https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dredirectlinear&correlator=','redirect'];
+    return ['https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dredirectlinear&correlator=', 'redirect'];
   } else if (vmap1 === true) {
     return ['https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostoptimizedpodbumper&cmsid=496&vid=short_onecue&correlator=', 'vmap1 G'];
   } else if (vmap2 === true) {
@@ -154,10 +155,11 @@ app.get('/ssp', cors({credentials: true, origin: 'https://imasdk.googleapis.com'
 });
 
 app.get('/ads', cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
+  chanceBid();
   console.log(req.query);
-  chanceBid(req.query);
   // eslint-disable-next-line prefer-const
-  let _chanceBidUrl = chanceBidUrl();
+  let _chanceBidUrl = chanceBidUrl(req.query);
+  console.log('_chanceBidUrl', _chanceBidUrl);
   makeXandrCall(_chanceBidUrl[0]).then((response) => {
     res.type('application/xml');
     res.send(response);
