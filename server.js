@@ -93,7 +93,7 @@ function makeXandrCall(url) {
   });
 }
 
-function chanceBid() {
+function chanceBid(req) {
   console.log('chancebid');
   return new Promise((resolve, reject) => {
     if (Math.random() < 0.1) {
@@ -138,8 +138,8 @@ app.get('/ssp', cors({credentials: true, origin: 'https://imasdk.googleapis.com'
 
 app.get('/ads',timeout(5000), cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
   _chanceBidUrl = '';
-  console.log('request received', _chanceBidUrl);
-  chanceBid().then(() => {
+  console.log('request received', _chanceBidUrl, req.query);
+  chanceBid(req.query).then(() => {
     console.log('then', _chanceBidUrl);
     makeXandrCall(_chanceBidUrl).then((response) => {
       res.type('application/xml');
