@@ -8,16 +8,6 @@ const cors = require('cors');
 let _chanceBidUrl = '';
 
 const videoJson1 = [{
-  'src': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-  'contentproducerId': 1002,
-  'publisherId': 1007,
-  'videoId': 5009,
-  'poster': 'https://d1pwmephoxhygn.cloudfront.net/VideoElephant/6cf22cd5-7529-4be7-80cb-b63f4c9a3fac/assets/Thumbnails/5d9d74f35c82b316cf46b3ba2e38a377.0000001.jpg',
-  'title': 'By Blender Foundation',
-}];
-
-const videoJson2 = [
-  {
     'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/2b08b86bcab54e9abdf685e816721e01/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
     'contentproducerId': 1002,
     'publisherId': 1007,
@@ -25,24 +15,35 @@ const videoJson2 = [
     'poster': 'https://d1pwmephoxhygn.cloudfront.net/VideoElephant/6cf22cd5-7529-4be7-80cb-b63f4c9a3fac/assets/Thumbnails/5d9d74f35c82b316cf46b3ba2e38a377.0000001.jpg',
     'sequence': 0,
     'title': 'By Blender Foundation',
-  },
-  {
-    'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/ab7533ed21a2476abadb3afa93955314/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
+}];
+
+const videoJson2 = [
+   {
+    'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/1e0dd248d4ce433690da3946ef90cdf1/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
     'contentproducerId': 1002,
     'publisherId': 1007,
-    'videoId': 5011,
-    'poster': 'https://d1pwmephoxhygn.cloudfront.net/VideoElephant/6ae008fc-146e-4908-baf4-ac3eaf65a457/assets/Thumbnails/2338767f5611cfd7780dad4ab9264bbb.0000001.jpg',
+    'videoId': 1340,
+    'poster': 'https://d1pwmephoxhygn.cloudfront.net/CampusLore/734164e033b711eca153b10917ac4f05/assets/d2fafd51-9a13-45b5-8cd3-3ef67de82e01/Thumbnails/734164e033b711eca153b10917ac4f05.0000001.jpg',
+    'sequence': 0,
+    'title': 'Calais Campbell: Be authentic and productive',
+  },
+  {
+    'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/638a306434e84f82aef63c56ca43b531/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
+    'contentproducerId': 1002,
+    'publisherId': 1007,
+    'videoId': 1305,
+    'poster': 'https://d1pwmephoxhygn.cloudfront.net/CampusLore/2b42931033a011ec9bb6070f47828f9a/assets/48ae80a5-f4f1-4ce0-9087-1af36cc04bcf/Thumbnails/2b42931033a011ec9bb6070f47828f9a.0000001.jpg',
     'sequence': 1,
-    'title': 'By Blender Foundation',
+    'title': '2021 NFL Rookie Preview: Linebackers',
   },
   {
-    'src': 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/8f36ce58202c4156b9f127f373dc529e/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
     'contentproducerId': 1002,
     'publisherId': 1007,
-    'videoId': 5012,
-    'poster': 'https://d1pwmephoxhygn.cloudfront.net/VideoElephant/ac064fe9-e5c2-480d-a09f-e53cf9e9c067/assets/Thumbnails/0170c9175e1326322af9f165bbb06e21.0000001.jpg',
+    'videoId': 1296,
+    'poster': 'https://d1pwmephoxhygn.cloudfront.net/CampusLore/dfa9ba80339c11ec9bb6070f47828f9a/assets/6e419954-2147-48b3-a032-79bd87640efa/Thumbnails/dfa9ba80339c11ec9bb6070f47828f9a.0000001.jpg',
     'sequence': 2,
-    'title': 'By Blender Foundation',
+    'title': '2021 NFL Rookie Preview: Wide Receivers',
   },
 ];
 
