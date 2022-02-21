@@ -1,17 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable require-jsdoc */
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const request = require('request');
 const cors = require('cors');
-
-let vmap1;
-let preroll;
-let vpaidlinear;
-let vpaidnonlinear;
-let vmap2;
-let redirect;
-let surveyPreroll;
+let _chanceBidUrl = '';
 
 const videoJson1 = [{
   'src': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
@@ -98,59 +92,38 @@ function makeXandrCall(url) {
 
 function chanceBid() {
   console.log('chancebid');
-  return new Promise((resolve, reject)=>{
+  return new Promise((resolve, reject) => {
     if (Math.random() < 0.1) {
-      // 10% probability of getting true
-      surveyPreroll = true;
-      console.log('10% probability of getting true', 'surveyPreroll');
+      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/simid&description_url=https%3A%2F%2Fdevelopers.google.com%2Finteractive-media-ads&tfcd=0&npa=0&sz=640x480&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
+      console.log('10% probability of getting true', 'surveyPreroll', _chanceBidUrl);
+      resolve();
     } else if (Math.random() < 0.2) {
-      // 20% probability of getting true
-      vpaidlinear = true;
-      console.log('20% probability of getting true', 'vpaidlinear');
+      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=';
+      console.log('20% probability of getting true', 'vpaidlinear', _chanceBidUrl);
+      resolve();
     } else if (Math.round() < 0.3) {
-      vpaidnonlinear = true;
-      // 30% probability of getting true
-      console.log('30% probability of getting true', 'vpaidnonlinear');
+      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostoptimizedpodbumper&cmsid=496&vid=short_onecue&correlator=';
+      console.log('30% probability of getting true', 'vpaidnonlinear', _chanceBidUrl);
+      resolve();
     } else if (Math.random() < 0.4) {
-      // 40% probability of getting true
-      redirect = true;
-      console.log('40% probability of getting true', 'redirect');
+      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dredirectlinear&correlator=';
+      console.log('40% probability of getting true', 'redirect', _chanceBidUrl);
     } else if (Math.random() < 0.5) {
-      // 50% probability of getting true
-      vmap1 = true;
-      console.log('50% probability of getting true', 'vmap1');
+      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator=';
+      console.log('50% probability of getting true', 'vmap1', _chanceBidUrl);
+      resolve();
     } else if (Math.random() < 0.8) {
-      preroll = true;
-      console.log('80% probability of getting true', 'preroll xandr');
+      _chanceBidUrl = 'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.ua;
+      console.log('80% probability of getting true', 'preroll xandr', _chanceBidUrl);
+      resolve();
     } else if (Math.random() < 0.9) {
-      vmap2 = true;
-      console.log('90% probability of getting true', 'vmap2');
+      _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/MidandPost.xml';
+      console.log('90% probability of getting true', 'vmap2', _chanceBidUrl);
+      resolve();
     }
-    console.log('end');
-    resolve();
   });
 }
 
-function chanceBidUrl(req) {
-  return new Promise((resolve, reject) => {
-    console.log('chanceBidUrl');
-    if (surveyPreroll === true) {
-      resolve(['https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/simid&description_url=https%3A%2F%2Fdevelopers.google.com%2Finteractive-media-ads&tfcd=0&npa=0&sz=640x480&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=', 'surverypreroll G']);
-    } else if ( vpaidlinear === true) {
-      resolve( ['https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=', 'linear G']);
-    } else if (vpaidnonlinear === true) {
-      resolve( ['https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dnonlinearvpaid2js&correlator=', 'nonlinear G']);
-    } else if ( redirect === true) {
-      resolve( ['https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dredirectlinear&correlator=', 'redirect']);
-    } else if (vmap1 === true) {
-      resolve( ['https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostoptimizedpodbumper&cmsid=496&vid=short_onecue&correlator=', 'vmap1 G']);
-    } else if (vmap2 === true) {
-      resolve( ['https://publisherfenwickdemo.s3.amazonaws.com/ads/MidandPost.xml', 'vmap2 S3']);
-    } else if (preroll === true) {
-      resolve( ['https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.ua, 'xandr']);
-    }
-  });
-}
 app.get('/ssp', cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
   makeXandrCall(req.query.url).then((response) => {
     res.type('application/xml');
@@ -161,12 +134,10 @@ app.get('/ssp', cors({credentials: true, origin: 'https://imasdk.googleapis.com'
 });
 
 app.get('/ads', cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
-  let _chanceBidUrl;
-  chanceBid().then(()=>chanceBidUrl(req.query)).then((res)=>{
-    _chanceBidUrl = res[0];
-  }).then(()=>{
-    console.log('_chanceBidUrl', _chanceBidUrl);
-  }).then(()=>{
+  _chanceBidUrl = '';
+  console.log('request received', _chanceBidUrl);
+  chanceBid().then(() => {
+    console.log('then', _chanceBidUrl);
     makeXandrCall(_chanceBidUrl).then((response) => {
       res.type('application/xml');
       res.send(response);
@@ -177,7 +148,8 @@ app.get('/ads', cors({credentials: true, origin: 'https://imasdk.googleapis.com'
 });
 
 
-app.get('/getvideo', cors({'origin': '*',
+app.get('/getvideo', cors({
+  'origin': '*',
   'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }), function(req, res) {
   console.log(req.query);
