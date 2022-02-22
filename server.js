@@ -115,7 +115,19 @@ function chanceBid(req) {
       _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator=';
       console.log('50% probability of getting true', 'vmap1', _chanceBidUrl);
       resolve();
-    } else if (Math.random() < 0.8) {
+    } else if((Math.random() < 0.6)){
+           _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/SkiingCampaign.xml';
+      console.log('else all no random', 'preroll skiingcampaign', _chanceBidUrl);
+      resolve();
+      }
+      else if((Math.random() < 0.7)){
+           _chanceBidUrl = 
+               'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' + 'videoId=' + req.videoId + '&prdtenant=' +req.prdtenant + '&pubtenant=' + req.pubtenant 
+          '&pubIp=' + req.ip + '&deviceType=' + req.deviceType + '&referrer=' + req.referrer + '&ua=' + req.ua + '&playlistId=' + req.playlistId;
+      console.log('else all no random', 'AWS SSAI', _chanceBidUrl);
+      resolve();
+      }
+      else if (Math.random() < 0.8) {
       _chanceBidUrl = 'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.ua;
       console.log('80% probability of getting true', 'preroll xandr', _chanceBidUrl);
       resolve();
@@ -124,11 +136,6 @@ function chanceBid(req) {
       console.log('90% probability of getting true', 'vmap2', _chanceBidUrl);
       resolve();
     }
-      else {
-           _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/SkiingCampaign.xml';
-      console.log('else all no random', 'preroll', _chanceBidUrl);
-      resolve();
-      }
   });
 }
 
