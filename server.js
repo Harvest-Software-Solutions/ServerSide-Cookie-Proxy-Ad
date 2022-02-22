@@ -84,10 +84,17 @@ app.get('/xandrgetUID', function(req, res) {
   res.send(req.query);
 });
 
-function makeCall(url) {
-  console.log('makecall',url);
+function makeCall(url, ua) {
+  const options = {
+    url: url,
+    headers: {
+      'User-Agent': encodeURI(ua),
+    },
+  };
+  console.log('makecallurl', url);
+  console.log('makecallua', encodeURI(ua));
   return new Promise((resolve, reject) => {
-    request(url, (err, res, body) => {
+    request(options, (err, res, body) => {
       if (err) reject(err);
       resolve(body);
     });
@@ -177,9 +184,10 @@ app.get('/ads', timeout(30000), cors({credentials: true, origin: 'https://imasdk
   req.query.referrer +
   '&playlistId=' +
   req.query.playlistId +
-  '&ua=mozilla';
+  '&ua=' +
+  encodeURI(req.query.ua);
 
-  makeCall(_newUrl).then((response) => {
+  makeCall(_newUrl, req.query.ua).then((response) => {
     console.log('******start response text********');
     console.log(response);
     console.log('******end response text********');
