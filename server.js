@@ -136,7 +136,7 @@ app.get('/ssp', cors({credentials: true, origin: 'https://imasdk.googleapis.com'
   });
 });
 
-app.get('/ads',timeout(15000), cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
+app.get('/ads',timeout(30000), cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
   _chanceBidUrl = '';
   console.log('request received', _chanceBidUrl, req.query);
   chanceBid(req.query).then(() => {
