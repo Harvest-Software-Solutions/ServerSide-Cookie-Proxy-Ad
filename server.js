@@ -117,14 +117,14 @@ function chanceBid(req) {
       resolve();
     } else if((Math.random() < 0.6)){
            _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/SkiingCampaign.xml';
-      console.log('else all no random', 'preroll skiingcampaign', _chanceBidUrl);
+      console.log('60% probability of getting true', 'preroll skiingcampaign', _chanceBidUrl);
       resolve();
       }
       else if((Math.random() < 0.7)){
            _chanceBidUrl = 
                'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' + 'videoId=' + req.videoId + '&prdtenant=' + req.prdtenant + '&pubtenant=' + req.pubtenant 
           '&pubIp=' + req.pubIp + '&deviceType=' + req.deviceType + '&referrer=' + req.referrer + '&ua=' + req.ua + '&playlistId=' + req.playlistId;
-      console.log('else all no random', 'AWS SSAI', _chanceBidUrl);
+      console.log('70% probability of getting true', 'AWS SSAI', _chanceBidUrl);
       resolve();
       }
       else if (Math.random() < 0.8) {
