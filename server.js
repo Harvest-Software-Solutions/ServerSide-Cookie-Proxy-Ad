@@ -176,7 +176,8 @@ app.get('/ads', timeout(30000), cors({credentials: true, origin: 'https://imasdk
   '&referrer=' +
   req.query.referrer +
   '&playlistId=' +
-  req.query.playlistId;
+  req.query.playlistId +
+  '&ua=mozilla 45.8';
 
   makeCall(_newUrl).then((response) => {
     console.log('******start response text********');
