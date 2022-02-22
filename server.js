@@ -163,19 +163,19 @@ app.get('/ads', timeout(30000), cors({credentials: true, origin: 'https://imasdk
   // });
   const _newUrl = 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' +
   'videoId=' +
-  req.videoId +
+  req.query.videoId +
   '&prdtenant=' +
-  req.prdtenant +
+  req.query.prdtenant +
   '&pubtenant=' +
-  req.pubtenant +
+  req.query.pubtenant +
   '&pubIp=' +
-  req.pubIp +
+  req.query.pubIp +
   '&deviceType=' +
-  req.deviceType +
+  req.query.deviceType +
   '&referrer=' +
-  req.referrer +
+  req.query..referrer +
   '&playlistId=' +
-  req.playlistId;
+  req.query.playlistId;
 
   makeXandrCall(_newUrl).then((response) => {
     console.log(response);
