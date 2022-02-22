@@ -122,8 +122,8 @@ function chanceBid(req) {
       }
       else if((Math.random() < 0.7)){
            _chanceBidUrl = 
-               'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' + 'videoId=' + req.videoId + '&prdtenant=' +req.prdtenant + '&pubtenant=' + req.pubtenant 
-          '&pubIp=' + req.ip + '&deviceType=' + req.deviceType + '&referrer=' + req.referrer + '&ua=' + req.ua + '&playlistId=' + req.playlistId;
+               'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' + 'videoId=' + req.videoId + '&prdtenant=' + req.prdtenant + '&pubtenant=' + req.pubtenant 
+          '&pubIp=' + req.pubIp + '&deviceType=' + req.deviceType + '&referrer=' + req.referrer + '&ua=' + req.ua + '&playlistId=' + req.playlistId;
       console.log('else all no random', 'AWS SSAI', _chanceBidUrl);
       resolve();
       }
