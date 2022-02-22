@@ -154,6 +154,7 @@ app.get('/ads',timeout(30000), cors({credentials: true, origin: 'https://imasdk.
   chanceBid(req.query).then(() => {
     console.log('then', _chanceBidUrl);
     makeXandrCall(_chanceBidUrl).then((response) => {
+        console.log(response);
       res.type('application/xml');
       res.send(response);
     }).catch((error) => {
