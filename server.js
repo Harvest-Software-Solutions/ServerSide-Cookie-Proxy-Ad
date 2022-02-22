@@ -105,8 +105,10 @@ function chanceBid(req) {
       console.log('20% probability of getting true', 'vpaidlinear', _chanceBidUrl);
       resolve();
     } else if (Math.random() < 0.3) {
-      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dredirectlinear&correlator=';
-      console.log('30% probability of getting true', 'redirect', _chanceBidUrl);
+      _chanceBidUrl =  'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' + 'videoId=' + req.videoId + '&prdtenant=' + req.prdtenant + '&pubtenant=' + req.pubtenant +
+          '&pubIp=' + req.pubIp + '&deviceType=' + req.deviceType + '&referrer=' + req.referrer + '&ua=' + req.ua + '&playlistId=' + req.playlistId;
+//           'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dredirectlinear&correlator=';
+      console.log('30% probability of getting true', 'AWS', _chanceBidUrl);
     } else if (Math.round() < 0.4) {
       _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostoptimizedpodbumper&cmsid=496&vid=short_onecue&correlator=';
       console.log('40% probability of getting true', 'vpaidnonlinear', _chanceBidUrl);
@@ -122,9 +124,9 @@ function chanceBid(req) {
       }
       else if((Math.random() < 0.7)){
            _chanceBidUrl = 
-               'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' + 'videoId=' + req.videoId + '&prdtenant=' + req.prdtenant + '&pubtenant=' + req.pubtenant 
+               'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' + 'videoId=' + req.videoId + '&prdtenant=' + req.prdtenant + '&pubtenant=' + req.pubtenant +
           '&pubIp=' + req.pubIp + '&deviceType=' + req.deviceType + '&referrer=' + req.referrer + '&ua=' + req.ua + '&playlistId=' + req.playlistId;
-      console.log('70% probability of getting true', 'AWS SSAI', _chanceBidUrl);
+      console.log('70% probability of getting true', 'AWS', _chanceBidUrl);
       resolve();
       }
       else if (Math.random() < 0.8) {
