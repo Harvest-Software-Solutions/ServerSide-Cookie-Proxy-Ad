@@ -104,13 +104,13 @@ function chanceBid(req) {
       _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=';
       console.log('20% probability of getting true', 'vpaidlinear', _chanceBidUrl);
       resolve();
-    } else if (Math.round() < 0.3) {
-      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostoptimizedpodbumper&cmsid=496&vid=short_onecue&correlator=';
-      console.log('30% probability of getting true', 'vpaidnonlinear', _chanceBidUrl);
-      resolve();
-    } else if (Math.random() < 0.4) {
+    } else if (Math.random() < 0.3) {
       _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dredirectlinear&correlator=';
-      console.log('40% probability of getting true', 'redirect', _chanceBidUrl);
+      console.log('30% probability of getting true', 'redirect', _chanceBidUrl);
+    } else if (Math.round() < 0.4) {
+      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostoptimizedpodbumper&cmsid=496&vid=short_onecue&correlator=';
+      console.log('40% probability of getting true', 'vpaidnonlinear', _chanceBidUrl);
+      resolve();
     } else if (Math.random() < 0.5) {
       _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator=';
       console.log('50% probability of getting true', 'vmap1', _chanceBidUrl);
@@ -124,6 +124,11 @@ function chanceBid(req) {
       console.log('90% probability of getting true', 'vmap2', _chanceBidUrl);
       resolve();
     }
+      else {
+           _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/SkiingCampaign.xml';
+      console.log('else all no random', 'preroll', _chanceBidUrl);
+      resolve();
+      }
   });
 }
 
