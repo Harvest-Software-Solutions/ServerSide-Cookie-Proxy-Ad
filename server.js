@@ -173,7 +173,7 @@ app.get('/ads', timeout(30000), cors({credentials: true, origin: 'https://imasdk
   '&deviceType=' +
   req.query.deviceType +
   '&referrer=' +
-  req.query..referrer +
+  req.query.referrer +
   '&playlistId=' +
   req.query.playlistId;
 
