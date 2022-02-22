@@ -84,7 +84,8 @@ app.get('/xandrgetUID', function(req, res) {
   res.send(req.query);
 });
 
-function makeXandrCall(url) {
+function makeCall(url) {
+  console.log('makecall',url);
   return new Promise((resolve, reject) => {
     request(url, (err, res, body) => {
       if (err) reject(err);
@@ -177,8 +178,10 @@ app.get('/ads', timeout(30000), cors({credentials: true, origin: 'https://imasdk
   '&playlistId=' +
   req.query.playlistId;
 
-  makeXandrCall(_newUrl).then((response) => {
+  makeCall(_newUrl).then((response) => {
+    console.log('******start response text********');
     console.log(response);
+    console.log('******end response text********');
     res.type('application/xml');
     res.send(response);
   }).catch((error) => {
