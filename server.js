@@ -79,7 +79,7 @@ const videoJson3 = [
   },
 ];
 
-app.get('/xandrgetUID', function(req, res) {
+app.get('/xandrgetUID', cors({origin:'*'}), function(req, res) {
   console.log(req.query);
   res.send(req.query);
 });
