@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable prefer-const */
 /* eslint-disable max-len */
 /* eslint-disable require-jsdoc */
 const express = require('express');
@@ -6,6 +8,10 @@ const PORT = process.env.PORT || 3000;
 const request = require('request');
 const cors = require('cors');
 const timeout = require('connect-timeout');
+const NodeCache = require( 'node-cache' );
+
+
+const _cachce = new NodeCache({stdTTL: 145, useClones: false, deleteOnExpire: true, checkperiod: 145});
 
 let _chanceBidUrl = '';
 
@@ -79,9 +85,28 @@ const videoJson3 = [
   },
 ];
 
-app.get('/xandrgetUID', cors({origin:'*'}), function(req, res) {
-  console.log(req.query);
+app.get('/xandrgetUID', timeout(30000), cors({origin: '*'}), function(req, res) {
+  console.log('xandrgetUID', req.query);
+  let obj = {adnxs_uid: req.query.adnxs_uid, referrer: req.query.referrer, sessionId: req.query.sessionId};
+  let success = _cachce.set(req.query.sessionId, obj, 145);
   res.send(req.query);
+});
+
+app.get('/getAllxandrUIDs', cors({origin: '*'}), function(req, res) {
+  let allKeys = _cachce.keys();
+  console.log( allKeys );
+  res.send(allKeys);
+});
+
+app.get('/getxandrUID', timeout(30000), cors({origin: '*'}), function(req, res) {
+  let value = _cachce.get( req.query.sessionId );
+  if ( value == undefined ) {
+    // handle miss!
+    res.setHeader('Content-Type', 'text/plain');
+    res.send({adnxs_uid: 'no value'});
+  }
+  console.log('getxandrUID', value);
+  res.send(value);
 });
 
 function makeCall(url, ua) {
