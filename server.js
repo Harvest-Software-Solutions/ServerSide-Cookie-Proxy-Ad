@@ -121,8 +121,9 @@ function makeCall(url, ua) {
 function chanceBid(req) {
   console.log('chancebid');
   return new Promise((resolve, reject) => {
-    // 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?'
-    _chanceBidUrl = 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' +
+    // 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?'
+    // QA
+    _chanceBidUrl = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
       'videoId=' +
       req.videoId +
       '&pubtenant=' +
