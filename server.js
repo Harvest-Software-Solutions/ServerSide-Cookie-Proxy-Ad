@@ -32,7 +32,7 @@ const videoJson2 = [
     'publisherId': 1001,
     'sequence': 0,
     'title': 'Looking At The Raiders Offense So Far',
-    'ur': 'https://e5cba4e52d6bf5f8702184a62757f919.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/6dcb504f92e64742b03719fd0cb98108/49b8085a215e423eaa7eb6b85dbf26cf/a9530afc08b0424cbc71e8465ea0322c/index.m3u8',
+    'url': 'https://e5cba4e52d6bf5f8702184a62757f919.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/6dcb504f92e64742b03719fd0cb98108/49b8085a215e423eaa7eb6b85dbf26cf/a9530afc08b0424cbc71e8465ea0322c/index.m3u8',
     'videoId': 1017
    },
    
