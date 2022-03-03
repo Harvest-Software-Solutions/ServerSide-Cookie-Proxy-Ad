@@ -175,8 +175,6 @@ function chanceBid(req) {
       _chanceBidUrl = 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' +
       'videoId=' +
       req.videoId +
-      '&prdtenant=' +
-      req.prdtenant +
       '&pubtenant=' +
       req.pubtenant +
       '&pubIp=' +
