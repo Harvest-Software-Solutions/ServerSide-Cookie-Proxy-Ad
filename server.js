@@ -138,7 +138,8 @@ function chanceBid(req) {
       console.log('20% probability of getting true', 'vpaidlinear', _chanceBidUrl);
       resolve();
     } else if (Math.random() < 0.3) {
-      _chanceBidUrl = 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' +
+//       https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?
+      _chanceBidUrl = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
       'videoId=' +
       req.videoId +
       '&prdtenant=' +
