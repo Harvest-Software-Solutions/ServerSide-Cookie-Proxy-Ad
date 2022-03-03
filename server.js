@@ -123,13 +123,39 @@ function chanceBid(req) {
   return new Promise((resolve, reject) => {
     // 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?'
     // QA
-    _chanceBidUrl = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
+    // _chanceBidUrl = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
+    //   'videoId=' +
+    //   req.videoId +
+    //   '&pubtenant=' +
+    //   req.pubtenant +
+    //   '&prdtenant=' + 
+    //   req.prdtenant +
+    //   '&pubIp=' +
+    //   req.pubIp +
+    //   '&deviceType=' +
+    //   req.deviceType +
+    //   '&referrer=' +
+    //   req.referrer +
+    //   '&playlistId=' +
+    //   req.playlistId +
+    //   '&ua=' +
+    //   encodeURI(req.ua);
+    //   resolve();
+    if (Math.random() < 0.1) {
+      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/simid&description_url=https%3A%2F%2Fdevelopers.google.com%2Finteractive-media-ads&tfcd=0&npa=0&sz=640x480&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
+      console.log('10% probability of getting true', 'surveyPreroll', _chanceBidUrl);
+      resolve();
+    } else if (Math.random() < 0.2) {
+      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=';
+      console.log('20% probability of getting true', 'vpaidlinear', _chanceBidUrl);
+      resolve();
+    } else if (Math.random() < 0.3) {
+//       https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?
+      _chanceBidUrl = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
       'videoId=' +
       req.videoId +
       '&pubtenant=' +
       req.pubtenant +
-      '&prdtenant=' + 
-      req.prdtenant +
       '&pubIp=' +
       req.pubIp +
       '&deviceType=' +
@@ -140,74 +166,48 @@ function chanceBid(req) {
       req.playlistId +
       '&ua=' +
       encodeURI(req.ua);
+      // 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dredirectlinear&correlator=';
+      console.log('30% probability of getting true', 'AWS', _chanceBidUrl);
       resolve();
-//     if (Math.random() < 0.1) {
-//       _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/simid&description_url=https%3A%2F%2Fdevelopers.google.com%2Finteractive-media-ads&tfcd=0&npa=0&sz=640x480&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
-//       console.log('10% probability of getting true', 'surveyPreroll', _chanceBidUrl);
-//       resolve();
-//     } else if (Math.random() < 0.2) {
-//       _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=';
-//       console.log('20% probability of getting true', 'vpaidlinear', _chanceBidUrl);
-//       resolve();
-//     } else if (Math.random() < 0.3) {
-// //       https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?
-//       _chanceBidUrl = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
-//       'videoId=' +
-//       req.videoId +
-//       '&pubtenant=' +
-//       req.pubtenant +
-//       '&pubIp=' +
-//       req.pubIp +
-//       '&deviceType=' +
-//       req.deviceType +
-//       '&referrer=' +
-//       req.referrer +
-//       '&playlistId=' +
-//       req.playlistId +
-//       '&ua=' +
-//       encodeURI(req.ua);
-//       // 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dredirectlinear&correlator=';
-//       console.log('30% probability of getting true', 'AWS', _chanceBidUrl);
-//       resolve();
-//     } else if (Math.round() < 0.4) {
-//       _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostoptimizedpodbumper&cmsid=496&vid=short_onecue&correlator=';
-//       console.log('40% probability of getting true', 'vpaidnonlinear', _chanceBidUrl);
-//       resolve();
-//     } else if (Math.random() < 0.5) {
-//       _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator=';
-//       console.log('50% probability of getting true', 'vmap1', _chanceBidUrl);
-//       resolve();
-//     } else if ((Math.random() < 0.6)) {
-//       _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/SkiingCampaign.xml';
-//       console.log('60% probability of getting true', 'preroll skiingcampaign', _chanceBidUrl);
-//       resolve();
-//     } else if ((Math.random() < 0.7)) {
-//       _chanceBidUrl = 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' +
-//       'videoId=' +
-//       req.videoId +
-//       '&pubtenant=' +
-//       req.pubtenant +
-//       '&pubIp=' +
-//       req.pubIp +
-//       '&deviceType=' +
-//       req.deviceType +
-//       '&referrer=' +
-//       req.referrer +
-//       '&playlistId=' +
-//       req.playlistId +
-//       '&ua=' +
-//       encodeURI(req.ua);
-//       console.log('70% probability of getting true', 'AWS', _chanceBidUrl);
-//       resolve();
-//     } else if (Math.random() < 0.8) {
-//       _chanceBidUrl = 'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.ua;
-//       console.log('80% probability of getting true', 'preroll xandr', _chanceBidUrl);
-//       resolve();
-//     } else if (Math.random() < 0.9) {
-//       _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/MidandPost.xml';
-//       console.log('90% probability of getting true', 'vmap2', _chanceBidUrl);
-//       resolve();
-//     }
+    } else if (Math.round() < 0.4) {
+      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostoptimizedpodbumper&cmsid=496&vid=short_onecue&correlator=';
+      console.log('40% probability of getting true', 'vpaidnonlinear', _chanceBidUrl);
+      resolve();
+    } else if (Math.random() < 0.5) {
+      _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator=';
+      console.log('50% probability of getting true', 'vmap1', _chanceBidUrl);
+      resolve();
+    } else if ((Math.random() < 0.6)) {
+      _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/SkiingCampaign.xml';
+      console.log('60% probability of getting true', 'preroll skiingcampaign', _chanceBidUrl);
+      resolve();
+    } else if ((Math.random() < 0.7)) {
+      _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/SkiingCampaign.xml' +
+      'videoId=' +
+      req.videoId +
+      '&pubtenant=' +
+      req.pubtenant +
+      '&pubIp=' +
+      req.pubIp +
+      '&deviceType=' +
+      req.deviceType +
+      '&referrer=' +
+      req.referrer +
+      '&playlistId=' +
+      req.playlistId +
+      '&ua=' +
+      encodeURI(req.ua);
+      console.log('70% probability of getting true', 'AWS', _chanceBidUrl);
+      resolve();
+    } else if (Math.random() < 0.8) {
+      _chanceBidUrl = 'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.ua;
+      console.log('80% probability of getting true', 'preroll xandr', _chanceBidUrl);
+      resolve();
+    } else if (Math.random() < 0.9) {
+      _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/MidandPost.xml';
+      console.log('90% probability of getting true', 'vmap2', _chanceBidUrl);
+      resolve();
+    }
   });
 }
 
