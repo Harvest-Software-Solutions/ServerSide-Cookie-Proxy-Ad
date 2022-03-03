@@ -28,7 +28,7 @@ const videoJson1 = [{
 const videoJson2 = [
   {
     'contentproduer': 1006,
-    'poster': 'VideoElephant/8643a095-125d-443f-9392-3b259464ec0b/assets/Thumbnails/0b0db05fda42f994405b61f928eb7088.0000001.jpg',
+    'poster': 'https://d1w6a77c28m7kb.cloudfront.net/VideoElephant/8643a095-125d-443f-9392-3b259464ec0b/assets/Thumbnails/0b0db05fda42f994405b61f928eb7088.0000001.jpg',
     'publisherId': 1001,
     'sequence': 0,
     'title': 'Looking At The Raiders Offense So Far',
@@ -38,7 +38,7 @@ const videoJson2 = [
    
    {
     'contentproduer': 1006,
-    'poster': 'VideoElephant/57c72ac9-a6ab-4636-af18-f25d64d1d039/assets/Thumbnails/536b4a8918a17b6673929674989ad4fa.0000001.jpg',
+    'poster': 'https://d1w6a77c28m7kb.cloudfront.net/VideoElephant/57c72ac9-a6ab-4636-af18-f25d64d1d039/assets/Thumbnails/536b4a8918a17b6673929674989ad4fa.0000001.jpg',
     'publisherId': 1001,
     'sequence': 1,
     'title': 'Synching Up Bears Passing Game in Week 8',
