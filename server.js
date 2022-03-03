@@ -134,6 +134,8 @@ function chanceBid(req) {
       req.videoId +
       '&pubtenant=' +
       req.pubtenant +
+      '&prdtenant=' + 
+      req.prdtenant +
       '&pubIp=' +
       req.pubIp +
       '&deviceType=' +
