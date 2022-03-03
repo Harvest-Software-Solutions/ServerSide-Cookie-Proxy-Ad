@@ -27,32 +27,24 @@ const videoJson1 = [{
 
 const videoJson2 = [
   {
-    'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/1e0dd248d4ce433690da3946ef90cdf1/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
-    'contentproducerId': 1005,
-    'publisherId': 1013,
-    'videoId': 20849,
-    'poster': 'https://d1pwmephoxhygn.cloudfront.net/CampusLore/734164e033b711eca153b10917ac4f05/assets/d2fafd51-9a13-45b5-8cd3-3ef67de82e01/Thumbnails/734164e033b711eca153b10917ac4f05.0000001.jpg',
+    'contentproduer': 1006,
+    'poster': 'VideoElephant/8643a095-125d-443f-9392-3b259464ec0b/assets/Thumbnails/0b0db05fda42f994405b61f928eb7088.0000001.jpg',
+    'publisherId': 1001,
     'sequence': 0,
-    'title': 'Calais Campbell: Be authentic and productive',
-  },
-  {
-    'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/638a306434e84f82aef63c56ca43b531/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
-    'contentproducerId': 1005,
-    'publisherId': 1013,
-    'videoId': 20851,
-    'poster': 'https://d1pwmephoxhygn.cloudfront.net/CampusLore/2b42931033a011ec9bb6070f47828f9a/assets/48ae80a5-f4f1-4ce0-9087-1af36cc04bcf/Thumbnails/2b42931033a011ec9bb6070f47828f9a.0000001.jpg',
+    'title': 'Looking At The Raiders Offense So Far',
+    'ur': 'https://e5cba4e52d6bf5f8702184a62757f919.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/6dcb504f92e64742b03719fd0cb98108/49b8085a215e423eaa7eb6b85dbf26cf/a9530afc08b0424cbc71e8465ea0322c/index.m3u8',
+    'videoId': 1017
+   },
+   
+   {
+    'contentproduer': 1006,
+    'poster': 'VideoElephant/57c72ac9-a6ab-4636-af18-f25d64d1d039/assets/Thumbnails/536b4a8918a17b6673929674989ad4fa.0000001.jpg',
+    'publisherId': 1001,
     'sequence': 1,
-    'title': '2021 NFL Rookie Preview: Linebackers',
-  },
-  {
-    'src': 'https://d8c1da9d356baba4ecb40074dc4758c5.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/8f36ce58202c4156b9f127f373dc529e/c60e5984a5a849c8828f58163dc8d020/50e4f858475a488a9b650313a8cc118b/index.m3u8',
-    'contentproducerId': 1005,
-    'publisherId': 1013,
-    'videoId': 20846,
-    'poster': 'https://d1pwmephoxhygn.cloudfront.net/CampusLore/dfa9ba80339c11ec9bb6070f47828f9a/assets/6e419954-2147-48b3-a032-79bd87640efa/Thumbnails/dfa9ba80339c11ec9bb6070f47828f9a.0000001.jpg',
-    'sequence': 2,
-    'title': '2021 NFL Rookie Preview: Wide Receivers',
-  },
+    'title': 'Synching Up Bears Passing Game in Week 8',
+    'url': 'https://e5cba4e52d6bf5f8702184a62757f919.egress.mediapackage-vod.us-east-1.amazonaws.com/out/v1/93b0c1af3bbf4a00884fc6a121646c51/49b8085a215e423eaa7eb6b85dbf26cf/a9530afc08b0424cbc71e8465ea0322c/index.m3u8',
+    'videoId': 1018
+   }
 ];
 
 const videoJson3 = [
@@ -129,7 +121,8 @@ function makeCall(url, ua) {
 function chanceBid(req) {
   console.log('chancebid');
   return new Promise((resolve, reject) => {
-    _chanceBidUrl = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
+    // 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?'
+    _chanceBidUrl = 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' +
       'videoId=' +
       req.videoId +
       '&pubtenant=' +
@@ -284,7 +277,7 @@ app.get('/getplaylistvideos', cors({
   'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }), function(req, res) {
   console.log(req.query);
-  if (Number(req.query.playlistId) === 1640167487) {
+  if (Number(req.query.playlistId) === 1645514871) {
     res.json(videoJson2);
   } else if (Number(req.query.playlistId) === 45679) {
     res.json(videoJson3);
