@@ -60,11 +60,11 @@
         // 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?'
         if (Math.random() < 0.1) {
         _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/simid&description_url=https%3A%2F%2Fdevelopers.google.com%2Finteractive-media-ads&tfcd=0&npa=0&sz=640x480&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
-        console.log('10% probability of getting true', 'surveyPreroll', _chanceBidUrl);
+        console.log('10% probability of getting true', 'surveyPreroll');
         resolve();
         } else if (Math.random() < 0.2) {
         _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=';
-        console.log('20% probability of getting true', 'vpaidlinear', _chanceBidUrl);
+        console.log('20% probability of getting true', 'vpaidlinear');
         resolve();
         } else if (Math.random() < 0.3) {
         _chanceBidUrl = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
@@ -93,26 +93,13 @@
         console.log('50% probability of getting true', 'vmap1');
         resolve();
         } else if ((Math.random() < 0.6)) {
-        _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/SkiingCampaign.xml';
-        console.log('60% probability of getting true', 'preroll skiingcampaign');
+        _chanceBidUrl = 'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.ua;;
+        console.log('60% probability of getting true', 'XANDR');
         resolve();
         } else if ((Math.random() < 0.7)) {
-        _chanceBidUrl = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
-        'videoId=' +
-        req.videoId +
-        '&pubtenant=' +
-        req.pubtenant +
-        '&pubIp=' +
-        req.pubIp +
-        '&deviceType=' +
-        req.deviceType +
-        '&referrer=' +
-        req.referrer +
-        '&playlistId=' +
-        req.playlistId +
-        '&ua=' +
+        _chanceBidUrl = 'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.ua;
         encodeURI(req.ua);
-        console.log('70% probability of getting true', 'CMC');
+        console.log('70% probability of getting true', 'XANDR');
         resolve();
         } else if (Math.random() < 0.8) {
         _chanceBidUrl = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
@@ -133,8 +120,9 @@
         console.log('80% probability of getting true', 'CMC');
         resolve();
         } else if (Math.random() < 0.9) {
-        _chanceBidUrl = 'https://publisherfenwickdemo.s3.amazonaws.com/ads/MidandPost.xml';
-        console.log('90% probability of getting true', 'vmap2');
+        _chanceBidUrl = 'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.ua;
+//             'https://publisherfenwickdemo.s3.amazonaws.com/ads/MidandPost.xml';
+        console.log('90% probability of getting true', 'XANDR');
         resolve();
         }
     });
@@ -152,7 +140,8 @@
     app.get('/ads', timeout(30000), cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) {
     chanceBid(req.query).then(() => {
         makeCall(_chanceBidUrl, req.query.ua).then((response) => {
-        console.log(response);
+        console.log('URL',_chanceBidUrl);
+            console.log(response);
         res.type('application/xml');
         res.send(response);
         }).catch((error) => {
