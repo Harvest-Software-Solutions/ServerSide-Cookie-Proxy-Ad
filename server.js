@@ -59,7 +59,8 @@
     return new Promise((resolve, reject) => {
             let cachebuster = Math.round(new Date().getTime() / 1000);
             _chanceBidUrl = 'https://vid.springserve.com/vast/274751?w=640&h=360&cb=' + cachebuster + '&url=' + req.referrer + '&us_privacy=1--';
-//         // 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?'
+resolve();
+            //         // 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?'
 //         if (Math.random() < 0.1) {
 //         _chanceBidUrl = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/simid&description_url=https%3A%2F%2Fdevelopers.google.com%2Finteractive-media-ads&tfcd=0&npa=0&sz=640x480&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
 //         console.log('10% probability of getting true', 'surveyPreroll');
