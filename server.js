@@ -40,7 +40,9 @@
     });
 
     function makeCall(req) {
-       let url =  'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' +
+        //PROD TAG
+        //'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?' 
+       let url = 'https://9qzlw9n4q2.execute-api.us-east-1.amazonaws.com/qa/ads?' +
         'videoId=' +
         req.videoId +
         '&pubtenant=' +
@@ -71,8 +73,9 @@
 
     app.get('/ads', timeout(30000), cors({credentials: true, origin: 'https://imasdk.googleapis.com'}), function(req, res) 
     {
+        console.log('received request',req.query);
         makeCall(req.query).then((response) => {
-                console.log(response);
+                console.log('received response',response);
             res.type('application/xml');
             res.send(response);
             }).catch((error) => {
