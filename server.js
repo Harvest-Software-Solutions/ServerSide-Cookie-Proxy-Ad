@@ -66,6 +66,7 @@
         },
     };
     return new Promise((resolve, reject) => {
+        console.log('making ad request url is ',url);
         request(options, (err, res, body) => {
         if (err) reject(err);
         resolve(body);
