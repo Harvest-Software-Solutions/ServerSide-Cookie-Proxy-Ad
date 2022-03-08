@@ -58,7 +58,8 @@
     console.log('chancebid');
     return new Promise((resolve, reject) => {
             let cachebuster = Math.round(new Date().getTime() / 1000);
-            _chanceBidUrl = 'https://vid.springserve.com/vast/274751?w=640&h=360&cb=' + cachebuster + '&url=' + req.referrer + '&us_privacy=1--';
+            _chanceBidUrl = 'https://secure.adnxs.com/ssptv?id=21641293' + '&referrer=' + req.referrer + '&vwidth=' + 920 + '&vheight=' + 780 + '&ua=' + req.ua;
+                //'https://vid.springserve.com/vast/274751?w=640&h=360&cb=' + cachebuster + '&url=' + req.referrer + '&us_privacy=1--';
 resolve();
             //         // 'https://09nfgyvbtl.execute-api.us-east-1.amazonaws.com/prod/ads?'
 //         if (Math.random() < 0.1) {
